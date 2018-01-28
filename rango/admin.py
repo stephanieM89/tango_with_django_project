@@ -7,8 +7,12 @@ class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'url')
 
 
-# Register your models here.
-admin.site.register(Category)
+# This class customises the Admin Interface
+class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
+
+
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(Page, PageAdmin)
 
 

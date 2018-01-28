@@ -21,8 +21,10 @@ from rango import views
 
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.index, name='index'),  # This maps the basic url to the index view in the rango app
     url(r'about/$', views.about, name='about'),
-    url(r'^rango/', include('rango.urls')),
+    url(r'^rango/', include('rango.urls')),  # Maps any URLs starting with rango/ to be handled by the rango app
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
