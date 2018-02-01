@@ -25,6 +25,12 @@ def about(request):
     # chapter 4, remove the following line
     # return HttpResponse("Rango says here is the about page. <br/> <a href='/rango/'>Index</a>")
     # replace with a pointer to the about.html template
+
+    #prints out whether the method is a GET or a POST
+    print(request.method)
+    # prints out user name, if no one is logged it prints AnonymousUser
+    print(request.user)
+
     return render(request, 'rango/about.html', {})
 
 
@@ -64,7 +70,8 @@ def add_category(request):
         form = CategoryForm(request.POST)
 
         if form.is_valid():
-            form.save(commit=True)
+            category = form.save(commit=True)
+            print(category, category.slug)
             return index(request)
         else:
             print(form.errors)
@@ -87,7 +94,7 @@ def add_page(request, category_name_slug):
                 page.category = category
                 page.views = 0
                 page.save()
-                return show_category(request, category_name_slug)
+            return show_category(request, category_name_slug)
         else:
             print(form.errors)
 
