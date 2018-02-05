@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),  # This maps the basic url to the index view in the rango app
     url(r'about/$', views.about, name='about'),
     url(r'^rango/', include('rango.urls')),  # Maps any URLs starting with rango/ to be handled by the rango app
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls), # For every URL starting with admin/ Django will find a corresponding view
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
