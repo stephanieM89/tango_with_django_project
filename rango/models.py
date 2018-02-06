@@ -2,6 +2,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
+
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
@@ -37,6 +38,6 @@ class UserProfile(models.Model):
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
-    #Override the __unicode__() metod to returnsomething meaningful
+    # Override the __unicode__() method to return something meaningful
     def __str__(self):
         return self.user.username

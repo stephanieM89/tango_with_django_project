@@ -26,12 +26,12 @@ class PageForm(forms.ModelForm):
         if url and not url.startswith('http://'):
             url = 'http://' + url
             cleaned_data['url'] = url
-
             return cleaned_data
 
     class Meta:
         model = Page
         exclude = ('category', )
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
@@ -45,3 +45,4 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ('website', 'picture')
+
