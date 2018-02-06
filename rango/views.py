@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 
 def index(request):
@@ -30,7 +31,7 @@ def about(request):
     # return HttpResponse("Rango says here is the about page. <br/> <a href='/rango/'>Index</a>")
     # replace with a pointer to the about.html template
 
-    #prints out whether the method is a GET or a POST
+    # prints out whether the method is a GET or a POST
     print(request.method)
     # prints out user name, if no one is logged it prints AnonymousUser
     print(request.user)
@@ -83,6 +84,7 @@ def add_category(request):
 
     return render(request, 'rango/add_category.html', {'form': form})
 
+
 @login_required
 def add_page(request, category_name_slug):
     try:
@@ -128,7 +130,7 @@ def register(request):
             user.set_password(user.password)
             user.save()
 
-            #Sort out the user profile instance
+            # Sort out the user profile instance
             # Since we need to set the user attribute outselves, we set commit = False.
             # This delays ssaving the model until we're ready to avoid integrity problems
             profile = profile_form.save(commit=False)
@@ -180,19 +182,14 @@ def user_login(request):
     else:
         return render(request, 'rango/login.html', {})
 
+
 @login_required
 def restricted(request):
     return HttpResponse("Since you're logged in, you can see this text!")
+
 
 # Use the login_required() decorator to ensure only those logged in can access the view
 @login_required
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
-
-
-
-
-
-
-
