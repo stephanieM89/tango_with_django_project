@@ -1,19 +1,18 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-About
+    About
 {% endblock %}
 
 {% block body_block %}
 
-<h1>About page</h1>
-This tutorial has been put together by Stephanie Man.
-<div>
-
-    <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>
-</div>
-<p>
-    <img src="{{MEDIA_URL}}cat.jpg" alt="Picture of a cat"/>
-</p>
+    <h1>About page</h1>
+    This tutorial has been put together by Stephanie Man.
+    <div>
+        <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango"/>
+    </div>
+    <p>
+        <img src="{{MEDIA_URL}}cat.jpg" alt="Picture of a cat"/>
+    </p>
 
 {% endblock %}

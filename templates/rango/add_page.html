@@ -1,7 +1,7 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 {% block title_block %}
-Add Page
+    Add Page
 {% endblock %}
 
 {% block body_block %}
@@ -12,20 +12,20 @@ Add Page
 
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
-        {{ hidden }}
+            {{ hidden }}
         {% endfor %}
 
         {% for field in form.visible_fields %}
-        {{ field.errors }}
-        {{ field.help_text }}
-        {{ field }}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
         {% endfor %}
 
         <input type="submit" name="submit" value="Add Page"/>
     </form>
 
     {% else %}
-    The specified category does not exist!
+        The specified category does not exist!
     {% endif %}
 
 </div>

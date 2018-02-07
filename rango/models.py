@@ -31,10 +31,7 @@ class Page(models.Model):
 
 
 class UserProfile(models.Model):
-    # Links UserProfile to a User model instance.
     user = models.OneToOneField(User)
-
-    # The additional attributes we wish to include
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
